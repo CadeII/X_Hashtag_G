@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text to Link</title>
+    <title>IU Hash Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<button onclick="loadAndRedirect()">링크로 이동</button>
+<button onclick="generateIUHash()">IU 해시 생성</button>
 
 <script>
-    function loadAndRedirect() {
+    function generateIUHash() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var lines = this.responseText.trim().split('\n');
-                var line = lines[Math.floor(Math.random() * lines.length)]; // 여기서 특정한 줄을 선택할 수 있습니다.
+                var line = lines[Math.floor(Math.random() * lines.length)];
                 window.open(line, '_blank');
             }
         };
