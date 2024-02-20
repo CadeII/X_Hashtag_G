@@ -7,17 +7,21 @@
 </head>
 <body>
 
-<!-- Assuming the file content is a single line -->
-<?php
-    $filename = 'list.txt';
-    $file = fopen($filename, 'r');
-    $line = fgets($file);
-    fclose($file);
-?>
+<button onclick="loadAndRedirect()">링크로 이동</button>
 
-<a href="<?php echo $line; ?>" target="_blank">
-    <button>링크로 이동</button>
-</a>
+<script>
+    function loadAndRedirect() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var line = this.responseText.trim();
+                window.open(line, '_blank');
+            }
+        };
+        xhttp.open("GET", "list.txt", true);
+        xhttp.send();
+    }
+</script>
 
 </body>
 </html>
