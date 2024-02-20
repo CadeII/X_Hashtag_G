@@ -30,9 +30,6 @@
             bottom: 0;
             width: 100%;
         }
-        .loading-message {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -43,29 +40,26 @@
 
     <main>
         <button onclick="executePythonScript()">파이썬 파일 실행</button>
-        <div id="loadingMessage" class="loading-message">실행 중...</div>
+        <div id="pythonResult"></div>
+
+        <script>
+            function executePythonScript() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // 파이썬 파일 실행 결과를 출력
+                        document.getElementById("pythonResult").innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.open("GET", "execute_python_script.php", true);
+                xhr.send();
+            }
+        </script>
     </main>
 
     <footer>
         <p>&copy; 2024 나의 홈페이지. 모든 권리 보유.</p>
     </footer>
 
-    <script>
-        function executePythonScript() {
-            // 실행 중 메시지 표시
-            document.getElementById("loadingMessage").style.display = "block";
-
-            // AJAX를 사용하여 서버에 요청을 보냄
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "execute_python_script.php", true);
-            xhr.onreadystatechange = function() {
-                // 요청이 완료되면 실행 중 메시지 숨김
-                if (xhr.readyState == 4) {
-                    document.getElementById("loadingMessage").style.display = "none";
-                }
-            };
-            xhr.send();
-        }
-    </script>
 </body>
 </html>
