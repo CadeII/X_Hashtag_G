@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>파일 실행</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Link</title>
 </head>
 <body>
 
-<button onclick="executeFile()">파일 실행</button>
+<!-- Assuming the file content is a single line -->
+<?php
+    $filename = 'list.txt';
+    $file = fopen($filename, 'r');
+    $line = fgets($file);
+    fclose($file);
+?>
 
-<script>
-  function executeFile() {
-    // 'main/run.html' 파일을 실행하는 코드 추가
-    window.location.href = 'run.html';
-  }
-</script>
+<a href="<?php echo $line; ?>" target="_blank">
+    <button>링크로 이동</button>
+</a>
 
 </body>
 </html>
