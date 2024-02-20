@@ -3,66 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 홈페이지</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
+    <title>파이썬 파일 실행</title>
+    <script>
+        function executePythonScript() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // 서버에서 받은 응답을 출력하거나 다른 처리를 수행할 수 있습니다.
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.open("GET", "execute_python_script.php", true);
+            xhr.send();
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em;
-        }
-        main {
-            padding: 1em;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    </script>
 </head>
 <body>
 
-    <header>
-        <h1>IU Hashtag Generator</h1>
-    </header>
-
-    <main>
-        <button onclick="redirectToRandomLine()">랜덤 주소로 이동</button>
-
-        <script>
-            function redirectToRandomLine() {
-                // AJAX를 사용하여 서버에서 list.txt의 내용을 가져옵니다.
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        var lines = xhr.responseText.split('\n');
-                        var randomLine = lines[Math.floor(Math.random() * lines.length)];
-
-                        // 주소창에 랜덤으로 선택된 한 줄을 추가하고 이동합니다.
-                        window.location.href = window.location.href + "?line=" + encodeURIComponent(randomLine);
-                    }
-                };
-                xhr.open("GET", "get_random_line.php", true); // get_random_line.php는 list.txt를 읽어올 서버 측 스크립트
-                xhr.send();
-            }
-        </script>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 나의 홈페이지. 모든 권리 보유.</p>
-    </footer>
+    <button onclick="executePythonScript()">hashtag_final.py 실행</button>
 
 </body>
 </html>
