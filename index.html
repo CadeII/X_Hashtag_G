@@ -35,19 +35,27 @@
 <body>
 
     <header>
-        <h1>환영합니다! 나의 홈페이지</h1>
+        <h1>IU Hashtag Generator</h1>
     </header>
 
     <main>
-        <section>
-            <h2>인사</h2>
-            <p>안녕하세요! 이곳은 나의 홈페이지입니다. 즐거운 시간 보내세요.</p>
-        </section>
+         <button onclick="executePythonScript()">파이썬 파일 실행</button>
 
-        <section>
-            <h2>소개</h2>
-            <p>저는 누구인지, 무엇을 좋아하는지 간단히 소개하는 부분입니다.</p>
-        </section>
+    <script>
+        function executePythonScript() {
+            var xhr = new XMLHttpRequest();
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // 성공적으로 요청이 완료되면 아무런 조치를 취하지 않습니다.
+                }
+            };
+
+            // 파이썬 스크립트 실행 요청을 보냅니다.
+            xhr.open("GET", "execute_python_script.php", true);
+            xhr.send();
+        }
+    </script>
     </main>
 
     <footer>
