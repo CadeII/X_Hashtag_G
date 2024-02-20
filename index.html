@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>파이썬 파일 실행</title>
+    <title>버튼 클릭으로 실행</title>
+
+    <!-- 주어진 스타일시트를 추가합니다. -->
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+
+    <!-- 주어진 스크립트를 추가하되 defer 속성을 사용합니다. -->
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
     <script>
-        function executePythonScript() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    // 서버에서 받은 응답을 출력하거나 다른 처리를 수행할 수 있습니다.
-                    console.log(xhr.responseText);
-                }
-            };
-            xhr.open("GET", "execute_python_script.php", true);
-            xhr.send();
+        function runMain() {
+            // 버튼이 클릭되면 'main/run.html'을 실행합니다.
+            window.location.href = 'main/run.html';
         }
     </script>
 </head>
 <body>
 
-    <button onclick="executePythonScript()">hashtag_final.py 실행</button>
+    <form>
+        <!-- 버튼을 추가하고 클릭 시 runMain 함수를 호출하도록 합니다. -->
+        <button onclick="runMain()">실행하기</button>
+    </form>
 
 </body>
 </html>
